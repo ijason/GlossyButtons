@@ -14,11 +14,9 @@ Import `#import "GlossyButton.h"` where you plan to create the buttons.
 
 Implementation code below:
 
-`
-    CGRect rect = CGRectMake(86,252,148,44);
-    GlossyButton *glossyBtn = [[GlossyButton alloc] initWithFrame:rect withBackgroundColor:[UIColor redColor]];
-    [self.view addSubview:glossyBtn];
-`
+`CGRect rect = CGRectMake(86,252,148,44);`
+`GlossyButton *glossyBtn = [[GlossyButton alloc] initWithFrame:rect withBackgroundColor:[UIColor redColor]];`
+`[self.view addSubview:glossyBtn];`
 
 ## Contact
 
