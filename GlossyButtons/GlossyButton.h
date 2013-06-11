@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GlossyButton : UIButton
+@property(strong, nonatomic)UIColor *myColor;
 - (id)initWithFrame:(CGRect)frame withBackgroundColor:(UIColor*)backgroundColor;
 @end
