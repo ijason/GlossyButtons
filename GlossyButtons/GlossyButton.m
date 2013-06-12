@@ -9,6 +9,12 @@
 #import "GlossyButton.h"
 #import <QuartzCore/QuartzCore.h>
 
+@interface GlossyButton()
+-(void)wasPressed;
+-(void)endedPress;
+- (void)makeButtonShiny:(GlossyButton*)button withBackgroundColor:(UIColor*)backgroundColor;
+@end
+
 @implementation GlossyButton
 
 - (id)initWithFrame:(CGRect)frame withBackgroundColor:(UIColor*)backgroundColor
@@ -19,6 +25,9 @@
         //save our color so we can alter it upon a touch event
         self.myColor = backgroundColor;
         [self makeButtonShiny:self withBackgroundColor:backgroundColor];
+        [self addTarget:self action:@selector(wasPressed) forControlEvents:UIControlEventTouchDown];
+        [self addTarget:self action:@selector(endedPress) forControlEvents:UIControlEventTouchUpInside];
+
     }
     return self;
 }
@@ -60,7 +69,7 @@
 
 //When button is touched, grab our existing color and make it 20% darker (or lighter if its black)
 //We will return it to its original state when the touch is lifted and touchesEnded:withEvent: is called
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+-(void)wasPressed
 {
     UIColor *newColor;
     CGFloat red = 0.0, green = 0.0, blue = 0.0, alpha = 0.0, white = 0.0;
@@ -104,7 +113,7 @@
     
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+-(void)endedPress
 {
     //Reset our button to its original color
     self.backgroundColor = self.myColor;
